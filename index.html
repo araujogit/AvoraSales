@@ -1,0 +1,2104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avora Sales — Crescimento Comercial com Método</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & BASE ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-primary:   #0B1C18;
+  --bg-surface:   #112219;
+  --bg-elevated:  #1A3D30;
+  --bg-light:     #F4F4F0;
+  --bg-white:     #FFFFFF;
+
+  --accent:       #2DBFA0;
+  --accent-light: #4DD9BD;
+  --accent-glow:  rgba(45,191,160,0.18);
+  --accent-subtle:rgba(45,191,160,0.08);
+  --wa-green:     #25D366;
+
+  --text-light:   #FFFFFF;
+  --text-muted:   rgba(255,255,255,0.55);
+  --text-dark:    #111510;
+  --text-dark-2:  #3A4040;
+
+  --border-dark:  rgba(255,255,255,0.07);
+  --border-accent:rgba(45,191,160,0.25);
+
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-pill: 999px;
+
+  --section-pad: 100px 0;
+  --max-w: 1160px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-light);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── GRAIN OVERLAY ────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ─── TYPOGRAPHY ───────────────────────────────────────────── */
+h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.1; }
+
+.display {
+  font-size: clamp(40px, 6vw, 68px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+.display em { font-style: normal; color: var(--accent); }
+
+h2.section-title {
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+h2.section-title em { font-style: normal; color: var(--accent); }
+
+h3.card-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.lead {
+  font-size: clamp(15px, 1.8vw, 18px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.body-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* ─── LAYOUT ───────────────────────────────────────────────── */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+section { padding: var(--section-pad); }
+
+/* ─── LABEL CHIP ───────────────────────────────────────────── */
+.label-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-subtle);
+  border: 1px solid var(--border-accent);
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  margin-bottom: 28px;
+}
+.label-chip::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ─── BUTTONS ──────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 16px 32px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: scale(0.98); }
+
+.btn-primary {
+  background: var(--accent);
+  color: #071410;
+  box-shadow: 0 4px 24px rgba(45,191,160,0.3);
+}
+.btn-primary:hover {
+  background: var(--accent-light);
+  box-shadow: 0 8px 32px rgba(45,191,160,0.45);
+}
+
+.btn-wa {
+  background: var(--wa-green);
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(37,211,102,0.3);
+  font-size: 15px;
+  padding: 18px 36px;
+}
+.btn-wa:hover {
+  background: #20b859;
+  box-shadow: 0 8px 36px rgba(37,211,102,0.45);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-light);
+  border: 1.5px solid rgba(255,255,255,0.2);
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-icon {
+  width: 44px; height: 44px;
+  padding: 0;
+  justify-content: center;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--r-pill);
+  color: var(--text-muted);
+}
+
+/* ─── NAVBAR ───────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 40px;
+  transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+}
+nav.scrolled {
+  background: rgba(11,28,24,0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-dark);
+}
+.nav-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+.nav-logo svg {
+  display: block;
+}
+.nav-logo span { color: var(--accent); }
+
+
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text-light); }
+
+.nav-cta { margin-left: 8px; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.hamburger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--text-light);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg-primary);
+  z-index: 99;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--accent); }
+.mobile-menu-close {
+  position: absolute;
+  top: 20px; right: 24px;
+  font-size: 32px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-display);
+}
+
+/* ─── HERO ─────────────────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 80px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+.hero-orb-1 {
+  width: 600px; height: 600px;
+  top: -100px; right: -100px;
+  background: radial-gradient(circle, rgba(45,191,160,0.12) 0%, transparent 70%);
+}
+.hero-orb-2 {
+  width: 400px; height: 400px;
+  bottom: 0; left: 10%;
+  background: radial-gradient(circle, rgba(45,191,160,0.06) 0%, transparent 70%);
+}
+.hero-grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px; height: 1px;
+  background: var(--accent);
+}
+
+.hero-title { margin-bottom: 24px; }
+
+.hero-desc {
+  margin-bottom: 40px;
+  max-width: 460px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-social-proof {
+  margin-top: 52px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-dark);
+  display: flex;
+  gap: 40px;
+}
+.proof-stat strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--accent);
+}
+.proof-stat span {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Hero visual side */
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-card-main {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--r-lg);
+  padding: 32px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
+.hero-card-main::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--r-lg);
+  background: linear-gradient(135deg, rgba(45,191,160,0.3), transparent 50%);
+  z-index: -1;
+}
+.hc-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hc-label::before {
+  content: '';
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hc-metric {
+  margin-bottom: 20px;
+}
+.hc-metric-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.hc-metric-bar {
+  height: 6px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+.hc-metric-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  border-radius: 3px;
+  transition: width 1.5s ease;
+}
+.hc-metric-val {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.hc-divider { height: 1px; background: var(--border-dark); margin: 20px 0; }
+
+.hc-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hc-growth {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-light);
+}
+.hc-growth span {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--accent);
+  display: block;
+  margin-top: 2px;
+}
+
+.floating-badge {
+  position: absolute;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--r-md);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.floating-badge.fb1 { bottom: -20px; left: -40px; animation-delay: 0s; }
+.floating-badge.fb2 { top: -20px; right: -20px; animation-delay: 2s; }
+.fb-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: var(--accent-subtle);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.fb-text strong { display: block; font-size: 13px; font-weight: 600; }
+.fb-text span { font-size: 11px; color: var(--text-muted); }
+
+/* ─── MARQUEE ──────────────────────────────────────────────── */
+.marquee-section {
+  padding: 0;
+  border-top: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  overflow: hidden;
+  background: var(--bg-surface);
+}
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  animation: marquee 28s linear infinite;
+  width: max-content;
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 40px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+  border-right: 1px solid var(--border-dark);
+}
+.marquee-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ─── ABOUT / O QUE É ──────────────────────────────────────── */
+#about {
+  background: var(--bg-light);
+  color: var(--text-dark);
+  position: relative;
+  overflow: hidden;
+}
+#about::before {
+  content: 'AVORA';
+  position: absolute;
+  top: -20px; right: -40px;
+  font-family: var(--font-display);
+  font-size: 220px;
+  font-weight: 800;
+  color: rgba(0,0,0,0.03);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-label { color: var(--accent); background: rgba(45,191,160,0.1); border-color: rgba(45,191,160,0.3); }
+
+.about-title { color: var(--text-dark); margin-bottom: 24px; }
+.about-title em { color: var(--accent); font-style: normal; }
+
+.about-text { color: var(--text-dark-2); margin-bottom: 20px; }
+
+.about-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+.about-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-dark-2);
+  line-height: 1.5;
+}
+.about-list li::before {
+  content: '';
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23071410'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* About visual */
+.about-visual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.about-stat-card {
+  background: var(--bg-white);
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: var(--r-lg);
+  padding: 28px 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.about-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+.about-stat-card.accent-card {
+  background: var(--accent);
+  border-color: transparent;
+}
+.about-stat-card.accent-card .stat-num { color: #071410; }
+.about-stat-card.accent-card .stat-label { color: rgba(7,20,16,0.7); }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dark-2);
+  line-height: 1.4;
+}
+.about-stat-card.tall { grid-row: span 2; display: flex; flex-direction: column; justify-content: flex-end; }
+.about-stat-card.tall .stat-num { font-size: 56px; }
+
+/* ─── PARA QUEM É ──────────────────────────────────────────── */
+#audience {
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+.audience-bg-orb {
+  position: absolute;
+  width: 500px; height: 500px;
+  left: -150px; top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(45,191,160,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.audience-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.audience-cards { display: flex; flex-direction: column; gap: 12px; }
+
+.audience-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--r-md);
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: border-color 0.25s, transform 0.2s;
+  cursor: default;
+}
+.audience-card:hover {
+  border-color: var(--border-accent);
+  transform: translateX(6px);
+}
+.ac-num {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--accent);
+  min-width: 28px;
+  padding-top: 2px;
+}
+.ac-text { font-size: 14px; line-height: 1.55; color: var(--text-muted); }
+.ac-text strong { color: var(--text-light); font-weight: 600; }
+
+.audience-close {
+  margin-top: 28px;
+  padding: 24px;
+  background: var(--accent-subtle);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--r-md);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1.5;
+}
+
+/* ─── SERVIÇOS ─────────────────────────────────────────────── */
+#services {
+  background: var(--bg-surface);
+  position: relative;
+}
+.services-header { text-align: center; margin-bottom: 60px; }
+.services-header .section-title { max-width: 600px; margin: 0 auto 16px; }
+.services-header .lead { max-width: 500px; margin: 0 auto; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.service-card {
+  background: var(--bg-primary);
+  padding: 40px 36px;
+  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.service-card:hover { background: var(--bg-elevated); }
+.service-card:hover::after { transform: scaleX(1); }
+
+.sc-number {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+.sc-icon {
+  width: 52px; height: 52px;
+  border-radius: var(--r-sm);
+  background: var(--accent-subtle);
+  border: 1px solid var(--border-accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+.sc-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.sc-desc { font-size: 14px; line-height: 1.65; color: var(--text-muted); margin-bottom: 24px; }
+.sc-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.sc-list li {
+  font-size: 13px;
+  color: var(--text-muted);
+  display: flex; align-items: flex-start; gap: 8px;
+  line-height: 1.4;
+}
+.sc-list li::before {
+  content: '→';
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ─── COMO FUNCIONA ────────────────────────────────────────── */
+#process {
+  background: var(--bg-light);
+  color: var(--text-dark);
+}
+.process-header { text-align: center; margin-bottom: 60px; }
+.process-header .section-title { color: var(--text-dark); margin-bottom: 12px; }
+.process-header .lead { color: var(--text-dark-2); }
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 38px;
+  left: calc(12.5%);
+  right: calc(12.5%);
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), rgba(45,191,160,0.2));
+}
+
+.process-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 24px;
+  position: relative;
+}
+.ps-num {
+  width: 76px; height: 76px;
+  border-radius: 50%;
+  background: var(--bg-white);
+  border: 2px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+  transition: background 0.3s, color 0.3s;
+}
+.process-step:hover .ps-num {
+  background: var(--accent);
+  color: #071410;
+}
+.ps-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+.ps-desc { font-size: 13px; color: var(--text-dark-2); line-height: 1.6; }
+
+/* ─── MÉTRICAS / PROOF ─────────────────────────────────────── */
+#proof {
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+.proof-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 50%, rgba(45,191,160,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.proof-header { text-align: center; margin-bottom: 60px; }
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  margin-bottom: 60px;
+}
+.proof-cell {
+  background: var(--bg-surface);
+  padding: 40px 32px;
+  text-align: center;
+  transition: background 0.3s;
+}
+.proof-cell:hover { background: var(--bg-elevated); }
+.proof-num {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.proof-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ─── DEPOIMENTOS ──────────────────────────────────────────── */
+#testimonials {
+  background: var(--bg-surface);
+}
+.testimonials-header { text-align: center; margin-bottom: 56px; }
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.testimonial-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--r-lg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: border-color 0.3s, transform 0.25s;
+}
+.testimonial-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-4px);
+}
+
+.tc-stars { display: flex; gap: 4px; }
+.tc-stars span { color: var(--accent); font-size: 14px; }
+.tc-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  flex: 1;
+}
+.tc-text::before {
+  content: '"';
+  font-family: var(--font-display);
+  font-size: 48px;
+  color: var(--accent);
+  line-height: 0.5;
+  display: block;
+  margin-bottom: 12px;
+}
+.tc-author { display: flex; align-items: center; gap: 12px; }
+.tc-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  border: 2px solid var(--border-accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.tc-name { font-size: 13px; font-weight: 600; }
+.tc-role { font-size: 11px; color: var(--text-muted); }
+
+/* ─── TEAM ─────────────────────────────────────────────────── */
+#team {
+  background: var(--bg-light);
+  color: var(--text-dark);
+}
+.team-header { text-align: center; margin-bottom: 56px; }
+.team-header .section-title { color: var(--text-dark); }
+.team-header .lead { color: var(--text-dark-2); max-width: 500px; margin: 12px auto 0; }
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.team-card {
+  background: var(--bg-white);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.team-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+}
+.team-card-header {
+  height: 140px;
+  background: linear-gradient(135deg, var(--bg-primary), var(--bg-elevated));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.team-avatar-wrap {
+  position: absolute;
+  bottom: -45px;
+  left: 28px;
+}
+.team-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--bg-white);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  background: transparent;
+}
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.team-card-body {
+  padding: 60px 28px 28px;
+}
+.team-role {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.team-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+.team-bio { font-size: 13px; color: var(--text-dark-2); line-height: 1.65; }
+
+/* ─── FAQ ──────────────────────────────────────────────────── */
+#faq {
+  background: var(--bg-primary);
+}
+.faq-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 80px;
+  align-items: start;
+}
+.faq-left .section-title { margin-bottom: 16px; }
+.faq-left .lead { margin-bottom: 32px; }
+
+.faq-list { display: flex; flex-direction: column; gap: 0; }
+.faq-item {
+  border-bottom: 1px solid var(--border-dark);
+}
+.faq-item:first-child { border-top: 1px solid var(--border-dark); }
+.faq-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 0;
+  text-align: left;
+  color: var(--text-light);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+.faq-btn:hover { color: var(--accent); }
+.faq-icon {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border-dark);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--accent);
+  transition: transform 0.3s, background 0.3s;
+}
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  background: var(--accent-subtle);
+  border-color: var(--border-accent);
+}
+.faq-answer {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s;
+}
+.faq-item.open .faq-answer {
+  max-height: 300px;
+  padding-bottom: 20px;
+}
+
+/* ─── CTA / FORMULÁRIO ─────────────────────────────────────── */
+#cta {
+  background: var(--bg-surface);
+  position: relative;
+  overflow: hidden;
+}
+.cta-bg-orb {
+  position: absolute;
+  width: 700px; height: 700px;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(45,191,160,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-box {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-accent);
+  border-radius: 28px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-left {
+  padding: 60px;
+  background: linear-gradient(135deg, rgba(45,191,160,0.05) 0%, transparent 100%);
+  border-right: 1px solid var(--border-accent);
+}
+.cta-title {
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 800;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+.cta-title em { font-style: normal; color: var(--accent); }
+.cta-desc { font-size: 15px; color: var(--text-muted); line-height: 1.65; margin-bottom: 32px; }
+
+.trust-items { display: flex; flex-direction: column; gap: 12px; }
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.trust-check {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--accent-subtle);
+  border: 1px solid var(--border-accent);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 10px;
+  color: var(--accent);
+}
+
+.cta-right {
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.cta-form-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.form-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.form-input {
+  font-family: var(--font-body);
+  font-size: 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--r-md);
+  padding: 14px 18px;
+  color: var(--text-light);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+.form-input::placeholder { color: rgba(255,255,255,0.2); }
+.form-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.form-input.textarea { resize: vertical; min-height: 90px; }
+
+.form-submit { margin-top: 8px; width: 100%; justify-content: center; }
+
+.urgency-note {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.urgency-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+
+/* ─── FOOTER ───────────────────────────────────────────────── */
+footer {
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-dark);
+  padding: 60px 0 32px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border-dark);
+  margin-bottom: 32px;
+}
+
+
+.footer-logo {
+  display: block;
+  text-decoration: none;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+.footer-logo svg {
+  display: block;
+}
+.footer-logo span { color: var(--accent); }
+.footer-tagline { font-size: 13px; color: var(--text-muted); line-height: 1.6; max-width: 260px; }
+
+.footer-col-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--accent); }
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+}
+
+/* ─── FLOAT WA BUTTON ──────────────────────────────────────── */
+.wa-float {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--wa-green);
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 22px 14px 18px;
+  border-radius: var(--r-pill);
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 4px 24px rgba(37,211,102,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: float 3s ease-in-out infinite;
+}
+.wa-float:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 36px rgba(37,211,102,0.5);
+  animation-play-state: paused;
+}
+.wa-float-icon { font-size: 20px; }
+.wa-float-text { line-height: 1.2; }
+.wa-float-text small { display: block; font-size: 10px; opacity: 0.8; font-weight: 400; }
+
+/* ─── SCROLL REVEAL ────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ─── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 60px; }
+  .hero-visual { display: none; }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .audience-inner { grid-template-columns: 1fr; gap: 48px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .process-steps::before { display: none; }
+  .proof-grid { grid-template-columns: 1fr 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .faq-inner { grid-template-columns: 1fr; gap: 40px; }
+  .cta-box { grid-template-columns: 1fr; }
+  .cta-left { border-right: none; border-bottom: 1px solid var(--border-accent); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .container { padding: 0 24px; }
+  section { padding: 72px 0; }
+}
+
+@media (max-width: 600px) {
+  .about-visual { grid-template-columns: 1fr 1fr; }
+  .about-stat-card.tall { grid-row: auto; }
+  .proof-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .hero-social-proof { gap: 24px; flex-wrap: wrap; }
+  .cta-left, .cta-right { padding: 40px 28px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .wa-float { padding: 14px 18px; }
+  .wa-float-text { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ══════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 38" height="34" width="auto" aria-label="Avora Sales">
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700" y="30" letter-spacing="-0.5">
+    <tspan fill="#8A9BB0">Avora</tspan><tspan fill="#6B9B4A" dx="6"> Sales</tspan>
+  </text>
+</svg>
+</a>
+    <ul class="nav-links">
+      <li><a href="#about">O que é</a></li>
+      <li><a href="#services">Serviços</a></li>
+      <li><a href="#process">Como funciona</a></li>
+      <li><a href="#testimonials">Clientes</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#cta" class="btn btn-primary nav-cta" style="font-size:12px;padding:12px 24px;">Diagnóstico gratuito</a>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose">×</button>
+  <a href="#about" class="mobile-link">O que é</a>
+  <a href="#services" class="mobile-link">Serviços</a>
+  <a href="#process" class="mobile-link">Como funciona</a>
+  <a href="#testimonials" class="mobile-link">Clientes</a>
+  <a href="#faq" class="mobile-link">FAQ</a>
+  <a href="#cta" class="btn btn-primary">Diagnóstico gratuito</a>
+</div>
+
+<!-- ═══ HERO ═════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-grid-lines"></div>
+  </div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Consultoria de Growth · São Paulo</div>
+        <h1 class="display hero-title">
+          Você está prestes a transformar o comercial da sua empresa em uma <em>máquina de crescimento</em> previsível
+        </h1>
+        <p class="lead hero-desc">
+          A Avora Sales estrutura, escala, realiza a gestão comercial e acelera operações comerciais de empresas que querem crescer com método — não com sorte.
+        </p>
+        <div class="hero-actions">
+          <a href="#cta" class="btn btn-primary">Diagnóstico gratuito →</a>
+          <a href="#services" class="btn btn-ghost">Ver serviços</a>
+        </div>
+        <div class="hero-social-proof">
+          <div class="proof-stat">
+            <strong>95%</strong>
+            <span>Previsão<br>de resultados</span>
+          </div>
+          <div class="proof-stat">
+            <strong>3x</strong>
+            <span>Pipeline em<br>90 dias</span>
+          </div>
+          <div class="proof-stat">
+            <strong>94%</strong>
+            <span>Taxa de<br>renovação</span>
+          </div>
+          <div class="proof-stat">
+            <strong>93%</strong>
+            <span>De evolução<br>comercial em 90 dias</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card-main">
+          <div class="hc-label">Performance em tempo real</div>
+          <div class="hc-metric">
+            <div class="hc-metric-label">Taxa de conversão do funil</div>
+            <div class="hc-metric-bar"><div class="hc-metric-fill" style="width:82%" id="bar1"></div></div>
+            <div class="hc-metric-val">82% — acima da meta</div>
+          </div>
+          <div class="hc-metric">
+            <div class="hc-metric-label">Pipeline ativo (MRR)</div>
+            <div class="hc-metric-bar"><div class="hc-metric-fill" style="width:67%" id="bar2"></div></div>
+            <div class="hc-metric-val">67% de crescimento no trimestre</div>
+          </div>
+          <div class="hc-metric">
+            <div class="hc-metric-label">Cadência de follow-up</div>
+            <div class="hc-metric-bar"><div class="hc-metric-fill" style="width:95%" id="bar3"></div></div>
+            <div class="hc-metric-val">95% — excelente</div>
+          </div>
+          <div class="hc-divider"></div>
+          <div class="hc-bottom">
+            <div class="hc-growth">
+              3.2x
+              <span>crescimento em 90 dias</span>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:4px;">vs. período anterior</div>
+              <div style="font-size:20px;color:#2DBFA0;font-weight:700;">▲ +218%</div>
+            </div>
+          </div>
+        </div>
+        <div class="floating-badge fb1">
+          <div class="fb-icon">📈</div>
+          <div class="fb-text">
+            <strong>Novo negócio fechado</strong>
+            <span>R$ 48.000 · agora mesmo</span>
+          </div>
+        </div>
+        <div class="floating-badge fb2">
+          <div class="fb-icon">✅</div>
+          <div class="fb-text">
+            <strong>Meta do mês atingida</strong>
+            <span>112% de resultado</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MARQUEE ═══════════════════════════════════════════════ -->
+<div class="marquee-section">
+  <div class="marquee-track" id="marqueeTrack">
+    <div class="marquee-item"><div class="marquee-dot"></div>Diagnóstico Comercial</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Estruturação de Processos</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Desenvolvimento de landing page</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Playbook de Vendas</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Gestão comercial</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Treinamento de Time</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Funil Previsível</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Inbound & Outbound</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Diagnóstico Comercial</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Estruturação de Processos</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Desenvolvimento de landing page</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Playbook de Vendas</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Gestão comercial</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Treinamento de Time</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Funil Previsível</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Inbound & Outbound</div>
+  </div>
+</div>
+
+<!-- ═══ ABOUT ═════════════════════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="label-chip about-label reveal">O que é a Avora Sales</div>
+        <h2 class="section-title about-title reveal reveal-delay-1">
+          Não entregamos slides.<br>Entregamos <em>resultado.</em>
+        </h2>
+        <p class="body-text about-text reveal reveal-delay-2">
+          A Avora Sales é uma consultoria especializada em growth e aceleração comercial, com sede em São Paulo. Trabalhamos lado a lado com empresários, diretores e líderes de vendas para diagnosticar gargalos, estruturar processos e implementar estratégias que geram crescimento real e previsível.
+        </p>
+        <p class="body-text about-text reveal reveal-delay-2">
+          Nosso trabalho vai da estratégia à execução — do funil ao fechamento, gerando demandas, da equipe à cultura de alta performance.
+        </p>
+        <ul class="about-list reveal reveal-delay-3">
+          <li>Diagnóstico profundo antes de qualquer recomendação</li>
+          <li>Implementação junto com o seu time, não para ele</li>
+          <li>Acompanhamento contínuo de métricas e resultados</li>
+          <li>Método validado</li>
+        </ul>
+        <div style="margin-top:36px;" class="reveal reveal-delay-4">
+          <a href="#cta" class="btn btn-primary" style="background:var(--accent);color:#071410;">Quero crescer com a Avora →</a>
+        </div>
+      </div>
+      <div class="about-visual reveal reveal-delay-2">
+        <div class="about-stat-card tall">
+          <div class="stat-num">93%<span style="font-size:20px;color:var(--accent);font-weight:500;">+</span></div>
+          <div class="stat-label" style="color:var(--text-dark-2);">De evolução
+            no processo comercial em 90 dias</div>
+        </div>
+        <div class="about-stat-card accent-card">
+          <div class="stat-num">94%</div>
+          <div class="stat-label">Renovam o contrato após o 1º ciclo</div>
+        </div>
+        <div class="about-stat-card">
+          <div class="stat-num">95%</div>
+          <div class="stat-label" style="color:var(--text-dark-2);">Previsão
+            de resultados</div>
+        </div>
+        <div class="about-stat-card" style="background:#0B1C18;border-color:rgba(45,191,160,0.3);">
+          <div class="stat-num">3x</div>
+          <div class="stat-label" style="color:rgba(255,255,255,0.55);">de crescimento médio em pipeline</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AUDIENCE ══════════════════════════════════════════════ -->
+<section id="audience">
+  <div class="audience-bg-orb"></div>
+  <div class="container">
+    <div class="audience-inner">
+      <div>
+        <div class="label-chip reveal">Para quem é</div>
+        <h2 class="section-title reveal reveal-delay-1">
+          A Avora Sales é para quem <em>quer crescer</em> de verdade
+        </h2>
+        <p class="lead reveal reveal-delay-2" style="margin-top:16px;margin-bottom:32px;">
+          Se você se identificar com pelo menos uma dessas situações, a Avora existe para isso.
+        </p>
+        <div class="audience-close reveal reveal-delay-3">
+          Se você se identificou com alguma dessas situações… a Avora Sales existe para resolver o que está travando o seu crescimento.
+        </div>
+        <div style="margin-top:32px;" class="reveal reveal-delay-4">
+          <a href="#cta" class="btn btn-primary">Quero meu diagnóstico gratuito →</a>
+        </div>
+      </div>
+      <div class="audience-cards">
+        <div class="audience-card reveal">
+          <div class="ac-num">01</div>
+          <div class="ac-text">É <strong>empresário</strong> e quer parar de depender de si mesmo para vender — quer um comercial que funcione sem você.</div>
+        </div>
+        <div class="audience-card reveal reveal-delay-1">
+          <div class="ac-num">02</div>
+          <div class="ac-text">Tem um <strong>time comercial</strong>, mas os resultados são inconsistentes e imprevisíveis mês a mês.</div>
+        </div>
+        <div class="audience-card reveal reveal-delay-2">
+          <div class="ac-num">03</div>
+          <div class="ac-text">Está <strong>crescendo</strong>, mas sente que o comercial não acompanha o ritmo do negócio — gargalo travando a escala.</div>
+        </div>
+        <div class="audience-card reveal reveal-delay-3">
+          <div class="ac-num">04</div>
+          <div class="ac-text">Já tentou <strong>contratar vendedores</strong>, mas o problema continua sendo estrutural — não é o time, é o processo.</div>
+        </div>
+        <div class="audience-card reveal reveal-delay-4">
+          <div class="ac-num">05</div>
+          <div class="ac-text">É <strong>gestor ou diretor</strong> com metas claras e precisa de método e processo — não de mais motivação.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ══════════════════════════════════════════════ -->
+<section id="services">
+  <div class="container">
+    <div class="services-header">
+      <div class="label-chip reveal" style="display:inline-flex;">Como aceleramos seu crescimento</div>
+      <h2 class="section-title reveal reveal-delay-1">Três pilares que <em>transformam</em> operações comerciais</h2>
+      <p class="lead reveal reveal-delay-2">Da estratégia à execução — sem achismo, sem enrolação.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="sc-number">01 — Diagnóstico</div>
+        <div class="sc-icon">🔍</div>
+        <div class="sc-title">Diagnóstico Comercial</div>
+        <p class="sc-desc">Enxergue o que está travando o seu crescimento. Mapeamento completo do funil, análise de time, processo, discurso e métricas.</p>
+        <ul class="sc-list">
+          <li>Mapeamento completo do funil de vendas</li>
+          <li>Identificação de gargalos e oportunidades ocultas</li>
+          <li>Análise de time, processo, discurso e métricas</li>
+          <li>Relatório estratégico com plano de ação priorizado</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="sc-number">02 — Estruturação</div>
+        <div class="sc-icon">⚙️</div>
+        <div class="sc-title">Estruturação de Processos</div>
+        <p class="sc-desc">Construa um processo de vendas previsível e escalável. Playbook, CRM e cadências para eliminar o improviso.</p>
+        <ul class="sc-list">
+          <li>Desenho do funil ideal para o seu negócio</li>
+          <li>Criação de playbook comercial e scripts</li>
+          <li>Definição de KPIs e cadências de follow-up</li>
+          <li>Contratação comercial</li>
+          <li>Implementação de CRM e ferramentas de gestão</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="sc-number">03 — Aceleração</div>
+        <div class="sc-icon">🚀</div>
+        <div class="sc-title">Aceleração de Growth</div>
+        <p class="sc-desc">Escale suas vendas com estratégia e velocidade. Geração de demanda, otimização de conversão e desenvolvimento de time.</p>
+        <ul class="sc-list">
+          <li>Desenvolvimento de landing page</li>
+          <li>Estratégias de geração de demanda (inbound e outbound)</li>
+          <li>Otimização de conversão em cada etapa do funil</li>
+          <li>Treinamento, gestão e desenvolvimento do time comercial</li>
+          <li>Acompanhamento contínuo de performance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══════════════════════════════════════════════ -->
+<section id="process">
+  <div class="container">
+    <div class="process-header">
+      <div class="label-chip reveal" style="display:inline-flex;color:var(--accent);background:rgba(45,191,160,0.08);border-color:rgba(45,191,160,0.25);">Como funciona</div>
+      <h2 class="section-title reveal reveal-delay-1">Do diagnóstico ao crescimento em <em>4 etapas</em></h2>
+      <p class="lead reveal reveal-delay-2">Um processo claro, sem surpresas, com acompanhamento em cada passo.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="ps-num">01</div>
+        <div class="ps-title">Diagnóstico</div>
+        <p class="ps-desc">Entendemos seu negócio, mercado e operação comercial em profundidade antes de qualquer recomendação.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="ps-num">02</div>
+        <div class="ps-title">Estratégia</div>
+        <p class="ps-desc">Desenhamos um plano de crescimento sob medida para a sua realidade — sem receita de bolo.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="ps-num">03</div>
+        <div class="ps-title">Implementação</div>
+        <p class="ps-desc">Colocamos a mão na massa com o nosso e seu time comercial para executar o que foi planejado — na prática.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="ps-num">04</div>
+        <div class="ps-title">Aceleração</div>
+        <p class="ps-desc">Monitoramos, ajustamos e escalamos os resultados de forma contínua com foco em crescimento sustentável.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:56px;" class="reveal">
+      <a href="#cta" class="btn btn-primary" style="background:var(--accent);color:#071410;">Começar agora →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROOF ══════════════════════════════════════════════════ -->
+<section id="proof">
+  <div class="proof-bg"></div>
+  <div class="container">
+    <div class="proof-header">
+      <div class="label-chip reveal" style="display:inline-flex;">Resultados</div>
+      <h2 class="section-title reveal reveal-delay-1">Números que <em>falam por si</em></h2>
+    </div>
+    <div class="proof-grid reveal">
+      <div class="proof-cell">
+        <div class="proof-num">+80</div>
+        <div class="proof-label">Diagnósticos comerciais aplicados em SP e Brasil</div>
+      </div>
+      <div class="proof-cell">
+        <div class="proof-num">R$40M+</div>
+        <div class="proof-label">Em receita gerada para nossos clientes</div>
+      </div>
+      <div class="proof-cell">
+        <div class="proof-num">3x</div>
+        <div class="proof-label">Crescimento médio em pipeline nos primeiros 90 dias</div>
+      </div>
+      <div class="proof-cell">
+        <div class="proof-num">94%</div>
+        <div class="proof-label">dos clientes renovam o contrato após o 1º ciclo</div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:14px;color:var(--text-muted);" class="reveal">
+      Esses números são resultado de método aplicado — não de promessa vazia.
+    </p>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ══════════════════════════════════════════ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="testimonials-header">
+      <div class="label-chip reveal" style="display:inline-flex;">O que nossos clientes dizem</div>
+      <h2 class="section-title reveal reveal-delay-1">Transformações <em>reais</em></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="tc-stars"><span>Rafael</span></div>
+        <p class="tc-text">Em 60 dias com a Avora Sales, nossa taxa de conversão dobrou. Pela primeira vez, o comercial tem processo, previsibilidade e resultado consistente. Nunca imaginei que seria tão rápido.</p>
+        <div class="tc-author">
+          <div class="tc-avatar">RC</div>
+          <div>
+            <div class="tc-name">Rafael Costa</div>
+            <div class="tc-role">CEO · TechFlow Soluções, SP</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="tc-stars"><span>Ana</span></div>
+        <p class="tc-text">Tentamos crescer sozinhos por 2 anos. Em 3 meses com a Avora, estruturamos o que não conseguíamos fazer em todo esse tempo. O diagnóstico foi preciso e a execução, impecável.</p>
+        <div class="tc-author">
+          <div class="tc-avatar">AM</div>
+          <div>
+            <div class="tc-name">Ana Martins</div>
+            <div class="tc-role">Diretora Comercial · Pulse B2B</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="tc-stars"><span>Lucas</span></div>
+        <p class="tc-text">A Avora não entrega consultoria. Entrega transformação. Meu time nunca performou tão bem. Saímos de R$280k para R$890k de MRR em menos de 6 meses de trabalho conjunto.</p>
+        <div class="tc-author">
+          <div class="tc-avatar">LF</div>
+          <div>
+            <div class="tc-name">Lucas Ferreira</div>
+            <div class="tc-role">Fundador · Nexus Growth, SP</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TEAM ═══════════════════════════════════════════════════ -->
+<section id="team">
+  <div class="container">
+    <div class="team-header">
+      <div class="label-chip reveal" style="display:inline-flex;color:var(--accent);background:rgba(45,191,160,0.08);border-color:rgba(45,191,160,0.25);">Quem está por trás da Avora</div>
+      <h2 class="section-title reveal reveal-delay-1" style="color:var(--text-dark);">Especialistas em <em>crescimento real</em></h2>
+      <p class="lead reveal reveal-delay-2" style="color:var(--text-dark-2);">Profissionais com atuação ativa em operações comerciais reais — prontos para ir da estratégia à execução no seu negócio.</p>
+    </div>
+    <div class="team-grid">
+  <div class="team-card reveal">
+    <div class="team-card-header">
+      <div style="font-family:var(--font-display);font-size:80px;font-weight:800;color:rgba(45,191,160,0.08);user-select:none;">
+        CEO
+      </div>
+
+     <div class="team-avatar-wrap">
+       <div class="team-avatar">
+          <img src="img/Gustavo.jpg" alt="Gustavo Araujo">
+       </div>
+      </div>
+    </div>
+
+    <div class="team-card-body">
+      <div class="team-role">CEO & Head de Growth</div>
+      <div class="team-name">Gustavo Araujo</div>
+      <p class="team-bio">
+        Mais de 5 anos estruturando operações comerciais e liderando crescimento em empresas B2B de tecnologia, serviços e varejo. Especialista em transformar times e processos em motores de resultado previsível.
+      </p>
+    </div>
+  </div>
+
+  <div class="team-card reveal reveal-delay-1">
+    <div class="team-card-header">
+      <div style="font-family:var(--font-display);font-size:80px;font-weight:800;color:rgba(45,191,160,0.08);user-select:none;">
+        CFO
+      </div>
+
+      <div class="team-avatar-wrap">
+         <div class="team-avatar">
+           <img src="img/Ana.jpg" alt="Ana Vitória">
+         </div>
+      </div>
+    </div>
+
+    <div class="team-card-body">
+      <div class="team-role">Head de Operações Comerciais</div>
+      <div class="team-name">Ana Vitória</div>
+      <p class="team-bio">
+        Especialista em implementação de CRM, playbooks e processos de vendas. Atuou em empresas de alto crescimento antes de co-fundar na Avora. Referência em estruturação de times comerciais escaláveis.
+      </p>
+    </div>
+  </div>
+</div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══════════════════════════════════════════════════ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-inner">
+      <div class="faq-left">
+        <div class="label-chip reveal">FAQ</div>
+        <h2 class="section-title reveal reveal-delay-1">Perguntas <em>frequentes</em></h2>
+        <p class="lead reveal reveal-delay-2">Ainda tem dúvidas? Fale diretamente com nosso time.</p>
+        <div style="margin-top:32px;" class="reveal reveal-delay-3">
+          <a href="https://wa.me/5511979855479?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20Avora%20Sales." target="_blank" class="btn btn-wa">
+            <span class="wa-float-icon">💬</span>
+            Falar no WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="faq-list reveal reveal-delay-1">
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">
+            O que é a Avora Sales?
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-answer">A Avora Sales é uma assessoria de growth e aceleração comercial. Trabalhamos com empresas que querem estruturar e escalar suas vendas com método, processo e estratégia — sem achismo.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">
+            Para que tipo de empresa vocês trabalham?
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-answer">Atendemos empresas B2B e B2C de diferentes segmentos que já faturam e querem crescer com previsibilidade. Nosso trabalho é mais eficaz para negócios com time comercial de pelo menos 2 pessoas ou fundadores que lideram as próprias vendas.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">
+            Como funciona o diagnóstico gratuito?
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-answer">É uma conversa estratégica de 20 a 30 minutos com um especialista da Avora Sales. Vamos entender seu negócio, processo atual e principais desafios — e você já sai com clareza sobre os próximos passos. Sem compromisso e sem pressão.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">
+            Quanto tempo leva para ver resultados?
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-answer">Os primeiros resultados aparecem em 30 a 60 dias. A estruturação completa de uma operação comercial geralmente leva de 3 a 6 meses, dependendo do tamanho e maturidade do negócio.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">
+            Vocês trabalham de forma remota ou presencial?
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-answer">As duas modalidades. Atendemos clientes em São Paulo de forma presencial e híbrida, e também trabalhamos com empresas de todo o Brasil de forma remota, sem perda de qualidade na entrega.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">
+            Qual é o investimento?
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-answer">O investimento varia de acordo com o escopo e o tamanho da operação. Por isso, o primeiro passo é o diagnóstico gratuito — assim conseguimos entender sua realidade e propor a solução mais adequada para o seu momento.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA FORM ════════════════════════════════════════════════ -->
+<section id="cta">
+  <div class="cta-bg-orb"></div>
+  <div class="container">
+    <div class="cta-box reveal">
+      <div class="cta-left">
+        <div class="label-chip" style="margin-bottom:20px;">Diagnóstico gratuito</div>
+        <h2 class="cta-title">Pronto para destravar o crescimento da sua <em>empresa?</em></h2>
+        <p class="cta-desc">As vagas para diagnóstico gratuito são limitadas. Preencha suas informações e um especialista da Avora Sales entrará em contato em até 24 horas.</p>
+        <div class="trust-items">
+          <div class="trust-item"><div class="trust-check">✓</div>Diagnóstico 100% gratuito e sem compromisso</div>
+          <div class="trust-item"><div class="trust-check">✓</div>Resposta em até 24 horas úteis</div>
+          <div class="trust-item"><div class="trust-check">✓</div>Atendimento personalizado por especialista</div>
+          <div class="trust-item"><div class="trust-check">✓</div>Sua informação é confidencial e não é compartilhada</div>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-form-title">Fale com a Avora Sales</div>
+        <form id="leadForm" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Nome completo</label>
+            <input class="form-input" type="text" placeholder="Seu nome" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">WhatsApp</label>
+            <input class="form-input" type="tel" placeholder="(11) 99999-9999" id="waInput" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">E-mail</label>
+            <input class="form-input" type="email" placeholder="gustavoequipeavora@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Empresa</label>
+            <input class="form-input" type="text" placeholder="Nome da empresa" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Qual é o seu maior desafio comercial?</label>
+            <textarea class="form-input textarea" placeholder="Ex: meu time não converte, não tenho processo definido, preciso escalar..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-wa form-submit">
+            <span>💬</span> Quero meu diagnóstico gratuito
+          </button>
+          <div class="urgency-note">
+            <div class="urgency-dot"></div>
+            Vagas limitadas por mês — garantimos atendimento personalizado
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="footer-logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 38" height="28" width="auto" aria-label="Avora Sales">
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700" y="30" letter-spacing="-0.5">
+    <tspan fill="#8A9BB0">Avora</tspan><tspan fill="#6B9B4A" dx="6"> Sales</tspan>
+  </text>
+</svg>
+</a>
+        <p class="footer-tagline">Crescimento com método. Resultado com propósito. Consultoria de growth comercial com sede em São Paulo.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Serviços</div>
+        <ul class="footer-links">
+          <li><a href="#services">Diagnóstico Comercial</a></li>
+          <li><a href="#services">Estruturação de Processos</a></li>
+          <li><a href="#services">Aceleração de Growth</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Empresa</div>
+        <ul class="footer-links">
+          <li><a href="#about">Sobre nós</a></li>
+          <li><a href="#team">Time</a></li>
+          <li><a href="#testimonials">Cases</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contato</div>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a></li>
+          <li><a href="mailto:contato@avorasales.com.br">E-mail</a></li>
+          <li><a href="#" target="_blank">Instagram</a></li>
+          <li><a href="#" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Avora Sales. Todos os direitos reservados.</span>
+      <span>São Paulo, SP — Brasil</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ FLOATING WHATSAPP ══════════════════════════════════════ -->
+<a href="https://wa.me/5511979855479?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Avora%20Sales." target="_blank" class="wa-float" id="waFloat">
+  <span class="wa-float-icon">💬</span>
+  <div class="wa-float-text">
+    Falar no WhatsApp
+    <small>Resposta rápida</small>
+  </div>
+</a>
+
+<!-- ═══ JAVASCRIPT ════════════════════════════════════════════ -->
+<script>
+/* ─── NAVBAR SCROLL ─── */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* ─── HAMBURGER ─── */
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+mobileMenuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+document.querySelectorAll('.mobile-link').forEach(l => {
+  l.addEventListener('click', () => mobileMenu.classList.remove('open'));
+});
+
+/* ─── SCROLL REVEAL ─── */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+
+/* ─── FAQ ACCORDION ─── */
+document.querySelectorAll('.faq-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+    btn.setAttribute('aria-expanded', !isOpen);
+  });
+});
+
+/* ─── FORM SUBMIT → WHATSAPP ─── */
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const inputs = form.querySelectorAll('input, textarea');
+  const nome     = inputs[0].value;
+  const wa       = inputs[1].value;
+  const email    = inputs[2].value;
+  const empresa  = inputs[3].value;
+  const desafio  = inputs[4].value;
+
+  const msg = encodeURIComponent(
+    `Olá! Vim pelo site da Avora Sales e quero agendar meu diagnóstico gratuito.\n\n` +
+    `*Nome:* ${nome}\n` +
+    `*E-mail:* ${email || '—'}\n` +
+    `*Empresa:* ${empresa}\n` +
+    `*Meu maior desafio:* ${desafio || '—'}`
+  );
+  window.open(`https://wa.me/5511999999999?text=${msg}`, '_blank');
+}
+
+/* ─── WA PHONE MASK ─── */
+const waInput = document.getElementById('waInput');
+if (waInput) {
+  waInput.addEventListener('input', function() {
+    let v = this.value.replace(/\D/g, '').slice(0, 11);
+    if (v.length >= 7) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+    else if (v.length >= 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+    this.value = v;
+  });
+}
+
+/* ─── ANIMATED COUNTER ─── */
+function animateCounter(el, target, suffix = '') {
+  const duration = 1800;
+  const start = performance.now();
+  const isDecimal = target % 1 !== 0;
+  function update(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const val = isDecimal ? (ease * target).toFixed(1) : Math.round(ease * target);
+    el.textContent = val + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const raw = el.dataset.count;
+    const suffix = el.dataset.suffix || '';
+    animateCounter(el, parseFloat(raw), suffix);
+    counterObs.unobserve(el);
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
+
+/* ─── SMOOTH SCROLL FOR ALL ANCHORS ─── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>
